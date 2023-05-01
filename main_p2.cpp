@@ -3,6 +3,7 @@
 #include <cstdlib>
 #include <vector>
 #include <cmath>
+#include <fstream>
 #include "hw3_p1_header.hpp"
 
 double rand_double(double min, double max) {
@@ -11,10 +12,11 @@ double rand_double(double min, double max) {
 }
 
 template <typename T>
-void testing(void (*func)(T, const std::vector<T>&, const std::vector<T>&, T, std::vector<T>&, int, int, int)) {
+void testing(void (*func)(T, const std::vector<T>&, const std::vector<T>&, T, std::vector<T>&, int, int, int), const std::string& output_filename) {
     //initialization
-    int ntrial = 3;
+    int ntrial = 10;
     std::srand(std::time(0));
+    std::ofstream outfile(output_filename);
 
     for (int n = 2; n <= 512; n++) {
         //allocate memories
@@ -37,16 +39,18 @@ void testing(void (*func)(T, const std::vector<T>&, const std::vector<T>&, T, st
         auto stop = std::chrono::high_resolution_clock::now();
         auto duration = std::chrono::duration_cast<std::chrono::microseconds>(stop - start).count();
         double avg_time = duration / static_cast<double>(ntrial);
-
-        std::cout << "n = " << n << ", avg_time (s) = " << avg_time * 1e-6 << std::endl;
+        double MFLOPs = (2.0 * n * n * n + 2.0 * n * n) / (avg_time);
+        std::cout << "n = " << n << ", MFLOPs = " << MFLOPs << std::endl;
+        outfile << n << ", " << MFLOPs << std::endl;
     }
+    outfile.close();
 }
 
 int main() {
     std::cout << "Running " << "kij" << std::endl;
-    testing<float>(mm_kij<float>);
+    testing<double>(mm_kij<double>, "kij_results_math_double.txt");
     std::cout << "Running " << "jki" << std::endl;
-    testing<float>(mm_jki<float>);
+    testing<double>(mm_jki<double>, "jki_results_math_double.txt");
 
     return 0;
 }

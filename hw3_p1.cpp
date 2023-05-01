@@ -91,10 +91,10 @@ void mm_kji(T alpha, const std::vector<T>& A, const std::vector<T>& B, T beta, s
 }
 
 // Explicit template instantiation
-template void mm_ijk<float>(float, const std::vector<float>&, const std::vector<float>&, float, std::vector<float>&, int, int, int);
-template void mm_ikj<float>(float, const std::vector<float>&, const std::vector<float>&, float, std::vector<float>&, int, int, int);
-template void mm_jik<float>(float, const std::vector<float>&, const std::vector<float>&, float, std::vector<float>&, int, int, int);
-template void mm_jki<float>(float, const std::vector<float>&, const std::vector<float>&, float, std::vector<float>&, int, int, int);
-template void mm_kij<float>(float, const std::vector<float>&, const std::vector<float>&, float, std::vector<float>&, int, int, int);
-template void mm_kji<float>(float, const std::vector<float>&, const std::vector<float>&, float, std::vector<float>&, int, int, int);
+template void mm_ijk<double>(double, const std::vector<double>&, const std::vector<double>&, double, std::vector<double>&, int, int, int);
+template void mm_ikj<double>(double, const std::vector<double>&, const std::vector<double>&, double, std::vector<double>&, int, int, int);
+template void mm_jik<double>(double, const std::vector<double>&, const std::vector<double>&, double, std::vector<double>&, int, int, int);
+template void mm_jki<double>(double, const std::vector<double>&, const std::vector<double>&, double, std::vector<double>&, int, int, int);
+template void mm_kij<double>(double, const std::vector<double>&, const std::vector<double>&, double, std::vector<double>&, int, int, int);
+template void mm_kji<double>(double, const std::vector<double>&, const std::vector<double>&, double, std::vector<double>&, int, int, int);
 
