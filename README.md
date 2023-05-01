@@ -53,3 +53,25 @@ After compilation, you can run the compiled programs and observe the results.
 ~~~
 
 The output will display the average execution time (in seconds) for each matrix size (n) from 2 to 512.
+
+## Problem 3: Strassen Matrix Multiplication
+
+This project implements a C++ template for the recursive Strassen matrix multiplication algorithm.
+We will then analyze the performance of our implementation by measuring the 
+double precision performance for square matrices of even dimensions, ranging from n = 2 to n = 512.
+
+### Files
+
+- `strassen.hpp`: Header file containing the template function declarations for Strassen algorithm.
+- `strassen.cpp`: Source file containing the template function definitions for Strassen algorithm.
+- `main_p3.cpp`: Main program to test the performance of Strassen algorithm using random input data.
+
+### Compilation and Execution
+
+~~~
+g++ -std=c++11 -Ofast -o test_strassen main_p3.cpp strassen.cpp
+./test_strassen
+~~~
+
+
+**Note:** All plot results are in the hw3.pdf file.
